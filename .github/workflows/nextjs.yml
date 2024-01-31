@@ -81,7 +81,7 @@ jobs:
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: List files
-        run: ls -al ./
+        run: find .. -iname how-to-test-react-with-jest.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
