@@ -21,6 +21,8 @@ const nextConfig = {
 
   output: "export",
 
+  basePath: "/notion-blog",
+
   // suppress keyv warning
   webpack: (config, { webpack }) => {
     config.plugins.push(
