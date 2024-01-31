@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import { getAllPostsFromNotion } from '@/services/posts';
 import { getErrorMessage } from '@/utils/get-error-message';
 
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {

@@ -19,6 +19,8 @@ const nextConfig = {
     ],
   },
 
+  output: "export",
+
   // suppress keyv warning
   webpack: (config, { webpack }) => {
     config.plugins.push(

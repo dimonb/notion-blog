@@ -22,7 +22,7 @@ export default function SyncPage() {
     }
 
     const { posts }: { posts: Post[] } = await postsRes.json();
-    const prevPostsRes = await fetch(`/api/posts/cache?password=${password}`);
+    const prevPostsRes = await fetch(`/api/posts?password=${password}`);
     const { posts: prevPosts }: { posts: Post[] } = await prevPostsRes.json();
 
     const slugsToRevalidate: string[] = [];
@@ -49,7 +49,7 @@ export default function SyncPage() {
 
       const promises: Promise<Response>[] = [];
       promises.push(
-        fetch(`/api/revalidate?path=/api/posts/cache&password=${password}`)
+        fetch(`/api/revalidate?path=/api/posts&password=${password}`)
       );
       promises.push(
         fetch(`/api/revalidate?path=/sitemap.xml&password=${password}`)
