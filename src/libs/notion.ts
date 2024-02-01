@@ -1,5 +1,6 @@
 import { NotionAPI } from 'notion-client';
 import { Block } from 'notion-types';
+import axios from 'axios';
 
 const notion = new NotionAPI({
   authToken: process.env.NOTION_AUTH_TOKEN,
@@ -9,7 +10,7 @@ export function getRecordMap(id: string) {
   return notion.getPage(id);
 }
 
-export function mapImageUrl(url: string, block: Block): string | null {
+export async function mapImageUrl(url: string, block: Block) {
   if (!url) {
     return null;
   }
@@ -62,5 +63,17 @@ export function mapImageUrl(url: string, block: Block): string | null {
 
   url = notionImageUrlV2.toString();
 
-  return url;
+  try {
+    const response = await axios.get(url, {
+      responseType: 'arraybuffer'
+    });
+
+    const base64 = Buffer.from(response.data, 'binary').toString('base64');
+    const mimeType = response.headers['content-type'];
+
+    return `data:${mimeType};base64,${base64}`;
+  } catch (error) {
+    console.error('Error fetching or converting image:', error);
+    return url;
+  }
 }

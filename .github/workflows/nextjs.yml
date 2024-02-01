@@ -46,8 +46,6 @@ jobs:
         run: npm install
       - name: Build with Next.js
         run: npm run build
-      - name: List files
-        run: find .. -iname how-to-test-react-with-jest.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
