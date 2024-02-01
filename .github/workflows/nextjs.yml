@@ -17,6 +17,7 @@ env:
   NOTION_DATABASE_ID: "8d090caf1f494af1b02498bdec3a75fd"
   API_KEY: "DSWbwdwWDWD"
   NEXT_PUBLIC_BASE_PATH: '/notion-blog'
+  SITE_URL: 'https://dimonb.github.io/notion-blog'
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
