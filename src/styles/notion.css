@@ -31,3 +31,7 @@
 .notion-page-content img{
     position: static !important;
 }
+
+.notion-to-do-checked {
+  text-decoration: line-through;
+}

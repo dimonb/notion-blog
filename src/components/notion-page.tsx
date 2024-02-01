@@ -24,7 +24,7 @@ export default function NotionPage({
 
   return (
     <NotionRenderer
-      darkMode={mounted ? theme === 'dark' : false}
+      darkMode={false}
       recordMap={recordMap}
       fullPage
       forceCustomImages
@@ -35,13 +35,12 @@ export default function NotionPage({
           <CategoryList categories={post.categories} />
         </div>
       }
-      mapImageUrl={(url, block) => mapImageUrl(url, block) || ''}
+      mapImageUrl={(url: any, block: any) => mapImageUrl(url, block) || ''}
       components={{
         Code,
         Collection,
         Equation,
         Modal,
-        Pdf,
         nextImage: Image,
       }}
     />
@@ -58,12 +57,6 @@ const Collection = dynamic(() =>
 );
 const Equation = dynamic(() =>
   import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
-);
-const Pdf = dynamic(
-  () => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf),
-  {
-    ssr: false,
-  }
 );
 const Modal = dynamic(
   () => import('react-notion-x/build/third-party/modal').then((m) => m.Modal),
