@@ -9,8 +9,9 @@ export async function getBlurImage(src: string) {
     // Fetch from remote
     buffer = await fetch(src).then(async (res) => Buffer.from(await res.arrayBuffer()));
   } else {
-    // Assume local file from public directory
-    const filePath = path.join(process.cwd(), 'public', src);
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+    const srcWithoutBasePath = basePath ? src.replace(basePath, '') : src;
+    const filePath = path.join(process.cwd(), 'public', srcWithoutBasePath);
     buffer = fs.readFileSync(filePath);
   };
 
