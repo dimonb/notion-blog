@@ -12,7 +12,7 @@ const nextConfig = {
 
   output: "export",
 
-  basePath: "/notion-blog",
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
 
   // suppress keyv warning
   webpack: (config, { webpack }) => {

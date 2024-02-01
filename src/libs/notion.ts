@@ -102,7 +102,5 @@ export async function mapImageUrl(url: string, block: Block) {
   }
 
   // Return public URL
-  return `/.img/${filename}`;  
-
-
+  return `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/.img/${filename}`;  
 }
