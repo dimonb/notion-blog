@@ -1,5 +1,6 @@
 import { NotionAPI } from 'notion-client';
 import { mapImageUrl } from '@/utils/get-image-url';
+import { Block } from 'notion-types';
 
 
 export function getRecordMap(id: string) {
@@ -9,16 +10,19 @@ export function getRecordMap(id: string) {
     return notion.getPage(id);
 }
 
-function findAllString(obj: any, level = 0) {
+function findAllString(obj: any, level = 0, currentBlock?: Block): any {
   if (level > 10) {
     return [];
   }
-  const result: string[] = [];
+  const result = [];
   if (typeof obj === 'string') {
-    result.push(obj);
+    result.push({obj, currentBlock});
   } else if (typeof obj === 'object') {
+    if (obj && obj.id) {
+      currentBlock = obj;
+    }
     for (const key in obj) {
-      result.push(...findAllString(obj[key], level+1));
+      result.push(...findAllString(obj[key], level+1, currentBlock));
     }
   }
   return result;
@@ -34,8 +38,8 @@ export async function getImageMap(recordMap: any){
   const imageMap = new Map<string, string>();
 
   for (const str of findAllString(recordMap)) {
-    if (str.startsWith('https://') && isImagePath(str)) {
-      imageMap.set(str, await mapImageUrl(str, recordMap));
+    if (str.obj.startsWith('https://') && isImagePath(str.obj)) {
+      imageMap.set(str.obj, await mapImageUrl(str.obj, str.currentBlock));
     }
   }
   return imageMap;
