@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 
 import NotionPage from '@/components/notion-page';
 import RelatedPosts from '@/components/posts/related-posts';
-import { getRecordMap } from '@/libs/notion';
+import { getRecordMap, getImageMap } from '@/libs/notion';
 import { getAllPostsFromNotion } from '@/services/posts';
 import { Post } from '@/types/post';
 
@@ -44,6 +44,7 @@ export default async function PostPage({
   );
 
   const recordMap = await getRecordMap(post.id);
+  const imageMap = await getImageMap(recordMap);
 
   return (
     <>
@@ -61,7 +62,7 @@ export default async function PostPage({
             blurDataURL={post.blurUrl}
           />
         </div>
-        <NotionPage post={post} recordMap={recordMap} />
+        <NotionPage post={post} recordMap={recordMap} imageMap={imageMap}/>
       </article>
       <RelatedPosts posts={relatedPosts} />
     </>

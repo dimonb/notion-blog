@@ -1,4 +1,5 @@
-import { getRecordMap, mapImageUrl } from '@/libs/notion';
+import { getRecordMap } from '@/libs/notion';
+import { mapImageUrl } from '@/utils/get-image-url';
 import { Post } from '@/types/post';
 import { getBlurImage } from '@/utils/get-blur-image';
 
