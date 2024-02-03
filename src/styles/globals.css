@@ -24,8 +24,72 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --C1: #efefef;
+
+  --C2: #c9d3d0;
+
+  --C3: #8ca09a;
+
+  --C4: #123939;
+
+  --C-bg: #e3e6e5;
+
+  --C2-50p: rgba(201, 211, 208, 0.5);
+
+  --spacing-s-1: 0.8rem;
+
+  --spacing-s-2: 1rem;
+
+  --spacing-xs: 0.4rem;
+
+  --spacing-md: 1.6rem;
+
+  --spacing--lg: 3.2rem;
+
+  --radius-radius-full: 36rem;
+
+  --radius-radius-rounded: 1.6rem;
+
+  --spacing-spacing-none: 0;
+
+  --footer-height: 12rem;
+}
+
+body {
+  background-color: var(--C-bg);
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: var(--footer-height);
+}
+
+.bg-primary {
+  background-color: var(--C-bg);
+}
+
 a,
 div,
 button {
   -webkit-tap-highlight-color: transparent;
+}
+
+.py-12 {
+  padding-bottom: 0rem;
+}
+
+.md\:mt-20 {
+  margin-top: 0rem;
+}
+
+@media screen and (max-width: 744px) {
+  .my-6 {
+    display: none;
+  }
+  .mb-16 {
+    font-size: 60%;
+  }
+
+  .py-12 {
+    display: none;
+  }
 }

@@ -23,7 +23,7 @@ export default function CategoryFilter({
   return (
     <div className="flex flex-col items-center space-y-4 md:items-start">
       <div className="flex items-center">
-        <h2 className="text-xl font-bold">Search by topics</h2>
+        {/* <h2 className="text-xl font-bold">Search by topics</h2>
         <button
           onClick={handleClearAll}
           className={`relative -right-10 text-xs ${
@@ -32,7 +32,7 @@ export default function CategoryFilter({
           }`}
         >
           Clear All
-        </button>
+        </button> */}
       </div>
       <div className="flex min-h-[56px] w-[90vw] max-w-[36rem] flex-wrap justify-start gap-y-[0.3rem]">
         {allCategories.map((category) => (

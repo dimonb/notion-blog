@@ -57,7 +57,6 @@ export default async function PostPage({
             src={post.cover}
             alt="cover"
             fill
-            style={{ objectFit: 'contain' }}
             placeholder="blur"
             blurDataURL={post.blurUrl}
           />

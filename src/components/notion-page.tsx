@@ -41,7 +41,7 @@ export default function NotionPage({
       mapImageUrl={(url: any, block: any) => mapUrl(imageMap, url)}
       components={{
         Code,
-        Collection,
+        Collection: () => null,
         Equation,
         Modal,
         nextImage: Image,
@@ -53,11 +53,11 @@ export default function NotionPage({
 const Code = dynamic(() =>
   import('react-notion-x/build/third-party/code').then((m) => m.Code)
 );
-const Collection = dynamic(() =>
-  import('react-notion-x/build/third-party/collection').then(
-    (m) => m.Collection
-  )
-);
+// const Collection = dynamic(() =>
+//   import('react-notion-x/build/third-party/collection').then(
+//     (m) => m.Collection
+//   )
+// );
 const Equation = dynamic(() =>
   import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
 );
@@ -72,5 +72,6 @@ function mapUrl(imageMap: Map<string, string>, url: string) {
   if (imageMap && imageMap.has(url)) {
     return imageMap.get(url) || url;
   }
+  console.debug('mapUrl', JSON.stringify(imageMap));
   return url;
 }

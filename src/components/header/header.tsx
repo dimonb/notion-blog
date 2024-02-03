@@ -4,10 +4,9 @@ import NavLink from '@/components/header/nav-link';
 import ThemeToggle from '@/components/theme-toggle';
 
 const NAV_ITEMS = [
-  { path: 'blog', name: 'Blog' },
+  { path: '/', name: 'Blog' },
   { path: 'about', name: 'About' },
-  { path: 'contact', name: 'Contact' },
-  { path: 'projects', name: 'Projects' },
+  { path: '/#contact', name: 'Contact' },
 ];
 
 export default function Header() {
@@ -28,7 +27,7 @@ export default function Header() {
           ))}
         </ul>
         <div className="absolute right-[10vw] top-12 md:static">
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
         </div>
       </div>
     </nav>
