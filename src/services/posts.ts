@@ -3,8 +3,11 @@ import { mapImageUrl } from '@/utils/get-image-url';
 import { Post } from '@/types/post';
 import { getBlurImage } from '@/utils/get-blur-image';
 
+
+//const allPosts: Post[] = [];
 export async function getAllPostsFromNotion() {
   const allPosts: Post[] = [];
+  //if (allPosts.length) return allPosts;
   const recordMap = await getRecordMap(process.env.NOTION_DATABASE_ID!);
   const { block, collection } = recordMap;
   const schema = Object.values(collection)[0].value.schema;
@@ -36,6 +39,7 @@ export async function getAllPostsFromNotion() {
       const cover = properties[propertyMap['Cover']][0][1][0][1];
       const date = properties[propertyMap['Date']][0][1][0][1]['start_date'];
       const published = properties[propertyMap['Published']][0][0] === 'Yes';
+      const locale = properties[propertyMap['Locale']][0][0];
 
       const coverUrl = await mapImageUrl(cover, block[pageId].value);
 
@@ -49,6 +53,7 @@ export async function getAllPostsFromNotion() {
         cover: coverUrl || '',
         date,
         published,
+        locale,
         lastEditedAt,
       });
     }

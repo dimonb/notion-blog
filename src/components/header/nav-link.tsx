@@ -10,8 +10,8 @@ export default function NavLink({
   path: string;
   children: React.ReactNode;
 }) {
-  const segment = useSelectedLayoutSegment();
-  const isActive = path.split('?')[0] === segment;
+  //const segment = useSelectedLayoutSegment();
+  const isActive = false; //path.split('?')[0] === segment;
 
   return (
     <Link href={`/${path}`} className={`group ${isActive && 'text-primary'}`}>

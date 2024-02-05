@@ -9,7 +9,6 @@ import { NotionRenderer } from 'react-notion-x';
 
 import CategoryList from '@/components/category-list';
 import useMounted from '@/hooks/use-mounted';
-import '@/styles/notion.css';
 import { Post } from '@/types/post';
 
 

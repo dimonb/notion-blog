@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "watsurelax"
+  },
+  "targets": {
+    "watsurelax": {
+      "hosting": {
+        "watsu-blog": [
+          "watsu-blog"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
